@@ -35,7 +35,7 @@ export async function POST(req: Request) {
     // Default branch
     const branch = await prisma.branch.findFirst();
     const defaultPlan = await prisma.membershipPlan.findFirst({
-      where: { name: { contains: "Flex" } },
+      where: { name: { contains: "Flex", mode: "insensitive" } },
     });
 
     const passwordHash = await bcrypt.hash(password, 10);

@@ -20,10 +20,10 @@ export async function GET(req: Request) {
           search
             ? {
                 OR: [
-                  { user: { name: { contains: search } } },
-                  { user: { email: { contains: search } } },
-                  { qrCode: { contains: search } },
-                  { user: { phone: { contains: search } } },
+                  { user: { name: { contains: search, mode: "insensitive" } } },
+                  { user: { email: { contains: search, mode: "insensitive" } } },
+                  { qrCode: { contains: search, mode: "insensitive" } },
+                  { user: { phone: { contains: search, mode: "insensitive" } } },
                 ],
               }
             : {},
